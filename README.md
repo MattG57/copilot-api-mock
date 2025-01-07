@@ -26,7 +26,7 @@ cd copilot-api-mock
 npm init -y
 
 # Install dependencies
-npm install --save-dev typescript ts-node date-fns @types/node
+npm install --save-dev typescript ts-node date-fns @types/node vitest
 ```
 
 ## Project Structure
@@ -36,7 +36,9 @@ copilot-api-mock/
 ├── src/
 │   ├── types.ts           # TypeScript interfaces and types
 │   ├── mockGenerator.ts   # Main mock generator implementation
-│   └── run.ts            # Example runner script
+│   ├── runMock.ts         # Script to run the mock generator
+│   ├── runExampleMock.ts  # Example configuration for the mock generator
+│   └── run.ts             # Example runner script
 ├── tsconfig.json
 └── package.json
 ```
@@ -73,6 +75,14 @@ const config: MockConfig = {
 const mockGenerator = new SophisticatedMockGenerator(config);
 const metrics = mockGenerator.generateMetrics();
 console.log(JSON.stringify(metrics, null, 2));
+```
+
+### Running the Mock Generator
+
+You can run the mock generator and output the results to a JSON file using the following command:
+
+```bash
+npx ts-node src/runMock.ts > output.json
 ```
 
 ### Configuring Trends
@@ -123,6 +133,14 @@ npm run start
 
 # Build the project
 npm run build
+```
+
+### Vitest Integration
+
+To run tests using Vitest, you can use the following command:
+
+```bash
+npx vitest
 ```
 
 ## Output Data Structure
@@ -177,6 +195,14 @@ To add new metrics or modify existing ones:
 1. Update the types in `types.ts`
 2. Add corresponding logic in `mockGenerator.ts`
 3. Update the configuration in your runner script
+
+### `runMock.ts`
+
+This script runs the mock generator for a month with a default configuration and outputs the generated metrics.
+
+### `runExampleMock.ts`
+
+This script provides an example configuration for the mock generator, which can be used to generate an example metrics payload response for one day and compare it to an example.json.
 
 ## License
 
