@@ -42,3 +42,18 @@ export interface MockConfig {
   repositories: string[];
 }
 
+export type UsagePattern = 'light' | 'heavy-but-siloed' | 'moderate' | 'heavy';
+
+export interface SeatsMockConfig {
+  startDate: Date;
+  endDate: Date;
+  usagePattern: UsagePattern;
+  heavyUsers: string[];  // List of user logins who are heavy users
+  editors: string[];     // List of possible editors
+}
+
+export interface AssigneeActivity {
+  login: string;
+  lastActivityAt: Date;
+}
+
